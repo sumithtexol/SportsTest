@@ -3,23 +3,37 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28822.285
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportsTest", "SportsTest\SportsTest.csproj", "{D3D1FED7-C5BA-4C50-878A-3C2FCA8558D5}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "SportsTest", "SportsTest\", "{96A9A9A5-A249-47E3-B726-CA6984E8B100}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.VirtualPath = "/localhost_50233"
+		Debug.AspNetCompiler.PhysicalPath = "..\..\..\..\..\SUMITH\Texol\Texol Projects\SportsTest\SportsTest\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50233\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_50233"
+		Release.AspNetCompiler.PhysicalPath = "..\..\..\..\..\SUMITH\Texol\Texol Projects\SportsTest\SportsTest\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50233\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "50233"
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D3D1FED7-C5BA-4C50-878A-3C2FCA8558D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D3D1FED7-C5BA-4C50-878A-3C2FCA8558D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D3D1FED7-C5BA-4C50-878A-3C2FCA8558D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D3D1FED7-C5BA-4C50-878A-3C2FCA8558D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96A9A9A5-A249-47E3-B726-CA6984E8B100}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96A9A9A5-A249-47E3-B726-CA6984E8B100}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {CB7D8D9F-607F-4948-B377-043D6424F5A8}
+		SolutionGuid = {2E5EFF5B-67BC-4880-806F-B641E4734C80}
 	EndGlobalSection
 EndGlobal
