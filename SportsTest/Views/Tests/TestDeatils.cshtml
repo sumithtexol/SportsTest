@@ -1,0 +1,159 @@
+﻿
+@{
+    ViewData["Title"] = "TestDeatils";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int slno = 1;
+}
+    <div class="col-md-12">
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="text-center">
+                        @ViewData["TestName"]-Date : @ViewData["TestDate"]
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Sl No</th>
+                                    <th>Ranking</th>
+                                    <th>Distance (Meter)</th>
+                                    <th>Fitness Rating</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tblMemberList">
+
+                                @foreach (var row in ViewData["MemberListByTest"] as IList<MemberDetailsByTest>)
+                                {
+                                    <tr>
+                                        <td>@slno </td>
+                                        <td>@row.MemberName</td>
+                                        <td>@row.Distance</td>
+                                        <td>
+                                            @{
+                                                string result = "";
+                                                if (row.Distance > 3500)
+                                                {
+                                                    result = "Very Good";
+                                                }
+                                                else if (row.Distance > 2000 && row.Distance <= 3500)
+                                                {
+                                                    result = "Good";
+                                                }
+                                                else if (row.Distance > 1000 && row.Distance <= 2000)
+                                                {
+                                                    result = "Average";
+                                                }
+                                                else if (row.Distance <= 1000)
+                                                {
+                                                    result = "Below Average";
+                                                }
+                                            }
+                                            @result
+                                        </td>
+                                        <td>
+                                            <a href="#" data-toggle="modal" data-target="#exampleModalEdit" onclick="editMember(@row.MemberId,@row.Distance,@row.MemberTestId)">Edit</a> |
+                                            <a onclick="deleteMember(@row.MemberTestId,@ViewData["TestId"])" href="#">Delete</a>
+                                        </td>
+                                        @{
+                                            slno = slno + 1;
+                                        }
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="panel-footer">
+                    <button type="button" class="btn btn-info mb-2" data-toggle="modal" data-target="#exampleModal">
+                        Create New Athlete
+                    </button>
+                    <button type="button" class="btn btn-danger mb-2" onclick="deleteTest(@ViewData["TestId"])">
+                        Delete Test
+                    </button>
+                    <a  class="btn btn-warning mb-2" href="/Tests/">
+                       Back
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <input type="hidden" value=@ViewData["TestId"] id="hdTestId" />
+
+        <!-- Modal Add -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add new Athlete</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Athlete Name</label>
+                            <select name="selTestName" class="form-control" id="selMember">
+                                <option value="0" >Choose Member</option>
+                                @foreach (var row in ViewData["MemberDetails"] as IList<Memders>)
+                                {
+                                    <option value="@row.MemberId">@row.MemberName</option>
+                                }
+                            </select>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Distance</label>
+                            <input type="number" value="" class="form-control" id="txtDistance" />
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="btnAddAthelate">Create Test</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Edit -->
+        <div class="modal fade" id="exampleModalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Edit Athlete</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Athlete Name</label>
+                            <select name="selTestName" class="form-control" id="selEditMember">
+                                <option value="0">Choose Member</option>
+                                @foreach (var row in ViewData["MemberDetails"] as IList<Memders>)
+                                {
+                                    <option value="@row.MemberId">@row.MemberName</option>
+                                }
+                            </select>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Distance</label>
+                            <input type="number" value="" class="form-control" id="txtEditDistance" />
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="btnEditAthelate">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <input type="hidden" value="" id="hdMemberTestId"/>
